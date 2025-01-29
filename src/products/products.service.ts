@@ -4,7 +4,7 @@ import {
   NotFoundException,
   ConflictException,
 } from '@nestjs/common';
-import { Pool } from 'pg'; // Importamos el Pool de PostgreSQL
+import { Pool } from 'pg'; // Importamos el Pool de postgreSQL
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { Product } from './models/product.model';
