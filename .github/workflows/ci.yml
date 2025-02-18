@@ -7,14 +7,23 @@ on:
     branches: [ "main", "develop" ]
 
 jobs:
-  ci:
+  avoid_redundancy:
     runs-on: ubuntu-24.04
+    steps:
+      - name: Cancel previous redundant runs
+        uses: styfle/cancel-workflow-action@0.12.0
+        with:
+          access_token: ${{ github.token }}
 
+  lint:
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      - name: Set up Node.js
+      - name: Setup node
         uses: actions/setup-node@v4
         with:
           node-version: 20.11.1
@@ -23,11 +32,108 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Run linter
+      - name: Run lint
         run: npm run lint
+
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.11.1
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build project
+        run: npm run build
+      
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist
+
+  tests:
+    needs: [lint, build]
+    runs-on: ubuntu-24.04 
+    steps: 
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.11.1
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist
 
       - name: Run tests
         run: npm test
 
-      - name: Build project
-        run: npm run build
+  # e2e-tests:
+  #   needs: [lint, build]
+  #   runs-on: ubuntu-24.04
+  #   steps:
+  #     - name: Checkout repository
+  #       uses: actions/checkout@v4
+  #       with:
+  #         fetch-depth: 0
+
+  #     - name: Setup node
+  #       uses: actions/setup-node@v4
+  #       with:
+  #         node-version: 20.11.1
+  #         cache: 'npm'
+
+  #     - name: Install dependencies
+  #       run: npm install
+       
+  #     - name: Download build artifacts
+  #       uses: actions/download-artifact@v4
+  #       with:
+  #         name: dist
+  #         path: dist
+
+  #     - name: Run e2e tests
+  #       run: npm run test:e2e
+
+  # deploy:
+  #   needs: [tests, e2e-tests]
+  #   runs-on: ubuntu-24.04
+  #   steps:
+  #     - name: Checkout repository
+  #       uses: actions/checkout@v4
+  #       with:
+  #         fetch-depth: 0
+
+  #     - name: Setup node
+  #       uses: actions/setup-node@v4
+  #       with:
+  #         node-version: 20.11.1
+  #         cache: 'npm'
+
+  #     - name: Install dependencies
+  #       run: npm install
+
+  #     - name: Deploy to Heroku
+  #       run: |
+  #         echo "Deploying to Heroku..."
+  #         git push https://heroku:$
