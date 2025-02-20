@@ -13,7 +13,7 @@ Graph Rest API Nest is a backend project built using NestJS to provide both REST
 
 - **NestJS**
 - **TypeScript**
-- **REST API**: Para autenticación de usuarios, almacenamiento de datos y notificaciones.
+- **REST API**
 - **GraphQL API**
 - **PostgreSQL**
 
