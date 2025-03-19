@@ -31,6 +31,7 @@ export class ProductsController {
     return this.productsService.findOne(id);
   }
 
+  // TEST
   @Put(':id')
   async update(
     @Param('id') id: string,
