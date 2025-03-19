@@ -30,7 +30,7 @@ export class ProductsResolver {
   ) {
     return this.productsService.update(id, updateProductDto);
   }
-
+  // TEST
   @Mutation(() => Product)
   removeProduct(@Args('id') id: string) {
     return this.productsService.remove(id);
