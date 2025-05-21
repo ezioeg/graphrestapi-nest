@@ -11,11 +11,11 @@ Graph Rest API Nest is a backend project built using NestJS to provide both REST
 
 ## Technologies Used
 
-- **NestJS**
-- **TypeScript**
-- **REST API**
-- **GraphQL API**
-- **PostgreSQL**
+- NestJS v10.0.0
+- TypeScript v5.0 (implicit with NestJS 10)
+- REST API (via @nestjs/common)
+- GraphQL API v12.2.1 (via @nestjs/graphql)
+- PostgreSQL v8.13.1 (pg package)
 
 ## Setup
 
