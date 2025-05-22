@@ -8,11 +8,12 @@ Graph Rest API Nest is a backend project built using NestJS to provide both REST
 - **Authentication and Authorization**: Includes basic authentication for secure access.
 
 ## Technologies Used
-- NestJS v10.0.0
-- TypeScript v5.0 (implicit with NestJS 10)
-- REST API (via @nestjs/common)
-- GraphQL API v12.2.1 (via @nestjs/graphql)
-- PostgreSQL v8.13.1 (pg package)
+### Backend & APIs
+- [NestJS](https://nestjs.com/) `v10.0.0`
+- [TypeScript](https://www.typescriptlang.org/) `v5.0` (implícito con NestJS 10)
+- REST API (a través de [@nestjs/common](https://docs.nestjs.com/controllers))
+- [GraphQL API](https://docs.nestjs.com/graphql/quick-start) `v12.2.1` (a través de [@nestjs/graphql](https://github.com/nestjs/graphql))
+- [PostgreSQL](https://www.postgresql.org/) `v8.13.1` (paquete [pg](https://github.com/brianc/node-postgres))
 
 ## Setup
 1. Install the dependencies:
