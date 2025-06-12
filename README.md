@@ -1,11 +1,18 @@
-# Graph Rest API Nest
-Graph Rest API Nest is a backend project built using NestJS to provide both RESTful API and GraphQL API capabilities. The application connects to a PostgreSQL database to manage and retrieve data. This project aims to offer a flexible API with multiple ways to interact with the same data source.
+## ⚙️ Graph Rest API Nest  
+Backend project developed with NestJS providing both RESTful and GraphQL API capabilities. It connects to a PostgreSQL database to manage and retrieve data efficiently. The project offers flexible ways to interact with the same data source.
 
-## Features
-- **REST API**: Fully functional RESTful endpoints to manage resources.
-- **GraphQL API**: GraphQL endpoints for efficient querying and data fetching.
-- **PostgreSQL Database**: Data storage managed via PostgreSQL for easy scalability and query optimization.
-- **Authentication and Authorization**: Includes basic authentication for secure access.
+### Features  
+- **REST API**  
+  Fully functional RESTful endpoints to create, read, update, and delete resources.
+
+- **GraphQL API**  
+  GraphQL endpoints designed for flexible and efficient data querying.
+
+- **PostgreSQL Database**  
+  Robust data storage with PostgreSQL, optimized for scalability and complex queries.
+
+- **Authentication and Authorization**  
+  Basic authentication implemented to secure API access.
 
 ## Technologies Used
 ### Backend & APIs
